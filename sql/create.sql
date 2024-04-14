@@ -4,7 +4,7 @@ USE
     textapi;
 
 --
--- bestemmie table
+-- text table
 --
 DROP TABLE IF EXISTS text;
 CREATE TABLE text

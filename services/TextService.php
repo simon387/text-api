@@ -30,10 +30,10 @@ class TextService
 
 	public function create($data): bool
 	{
-		if (empty($data->bestemmia)) {
+		if (empty($data->text)) {
 			return false;
 		}
 
-		return $this->text->create($data->bestemmia);
+		return $this->text->create($data->text);
 	}
 }
