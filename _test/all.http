@@ -1,0 +1,13 @@
+### get text
+GET {{url}}
+Accept: application/json
+
+
+### create text
+POST {{url}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "text": "dio {{$random.alphabetic(25)}}"
+}
