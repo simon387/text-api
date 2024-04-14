@@ -9,5 +9,5 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "text": "testo di prova"
+  "text": "     testo di prova"
 }
