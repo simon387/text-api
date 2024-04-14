@@ -7,16 +7,16 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 include_once '../services/TextService.php';
 
-$bestemmieService = new TextService();
+$textService = new TextService();
 
 switch ($_SERVER['REQUEST_METHOD']) {
 	case 'GET':
-		$bestemmie_arr = $bestemmieService->getLast();
-		echo json_encode($bestemmie_arr);
+		$text_arr = $textService->getLast();
+		echo json_encode($text_arr);
 		break;
 	case 'POST':
 		$data = json_decode(file_get_contents("php://input"));
-		if ($bestemmieService->create($data)) {
+		if ($textService->create($data)) {
 			http_response_code(201);
 			echo json_encode(array("response" => "Text created"));
 		} else {
