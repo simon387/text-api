@@ -1,0 +1,33 @@
+on:
+  push:
+    branches: [ master ]
+name: 🚀 Deploy website on push
+jobs:
+  build:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
+
+      - name: 📂 Sync files - back end
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.ftp_server }}
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            deploy_localhost.*
+            LICENSE
+            README.md
+            **/docs/**
+            _test/**
+            **/sql_scripts/**
+            sql/**
+            src/**
+            public/**
+          state-name: .ftp-deploy-sync-state_BACK_END.json
+          server-dir: text-api/
+          timeout: 1200000
