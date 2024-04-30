@@ -11,11 +11,7 @@ $textService = new TextService();
 
 switch ($_SERVER['REQUEST_METHOD']) {
 	case 'GET':
-		if (isset($_GET['all'])) {
-			$text_arr = $textService->getLast($_GET["all"]);
-		} else {
-			$text_arr = $textService->getLast('no');
-		}
+		$text_arr = $textService->getLast(isset($_GET['all']) ? $_GET["all"] : 'no');
 		echo json_encode($text_arr);
 		break;
 	case 'POST':
