@@ -1,7 +1,10 @@
-### get text
+### get one text
 GET {{url}}
 Accept: application/json
 
+### get all texts
+GET {{url}}?all=yes
+Accept: application/json
 
 ### create text
 POST {{url}}
@@ -9,5 +12,6 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "text": "     valeria, porque tienes siempre que leer todo?"
+  "text": "     welcome, bienvenido, bienvenue, willkommen, benvenuto, bem-vindo, welkom, dobro pozhalovat', huan ying, karibu, hwangyonghamnida, kalos orisate, valkommen, barukh haba, witajcie, selamat datang   "
 }
+
