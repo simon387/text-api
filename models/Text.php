@@ -21,14 +21,15 @@ class Text
 
 	public function getLast($all): array
 	{
+		$limit = 1;
 		if ($all == 'yes') { // if query string 'all' == 'yes', get all values
-			$query = "SELECT * FROM text ORDER BY id desc";
-		} else {
-			$query = "SELECT * FROM text ORDER BY id desc LIMIT 1;";
+			$limit = 1024;
 		}
+		$query = "SELECT * FROM text ORDER BY id desc LIMIT :limit";
 		$stmt = $this->conn->prepare($query);
+		$stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
 		$stmt->execute();
-		if ($all) {
+		if ($all == 'yes') {
 			$num = $stmt->rowCount();
 			if ($num > 0) {
 				$text_arr = array();
@@ -44,7 +45,7 @@ class Text
 				return $text_arr;
 			}
 		} else {
-			return $stmt->fetch(PDO::FETCH_ASSOC);
+			return $stmt->fetch(PDO::FETCH_ASSOC); // ritorna json a singolo elemento senza array
 		}
 		return [];
 	}
