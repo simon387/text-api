@@ -23,9 +23,9 @@ class TextService
 		}
 	}
 
-	public function getLast(): ?array
+	public function getLast($all): ?array
 	{
-		return $this->text->getLast();
+		return $this->text->getLast($all);
 	}
 
 	public function create($data): bool
